@@ -4,25 +4,13 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./redux/store";
-import ReduxContext from "./contexts/ReduxContext";
-// import { addTodo, completeTodo, showAll, showComplete } from "./redux/actions";
-
-// 변경 사항을 구독한다. 변경이 일어날시 callback 함수를 실행시킨다.
-// store.subscribe(() => {
-//   console.log(store.getState());
-// });
-
-// // console.log(store);
-// store.dispatch(addTodo("coding"));
-// store.dispatch(completeTodo(0));
-// store.dispatch(showAll());
-// store.dispatch(showComplete());
+import { Provider } from "react-redux";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ReduxContext.Provider value={store}>
+    <Provider store={store}>
       <App />
-    </ReduxContext.Provider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
