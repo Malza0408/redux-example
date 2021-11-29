@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import UserList from "../components/UserList";
-import { getUsersPromise, getUsersThunk } from "../redux/actions";
+import { getUsersThunk } from "../redux/modules/users";
 
 export default function UserListContainer() {
   const users = useSelector((state) => state.users.data);

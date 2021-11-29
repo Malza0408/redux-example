@@ -1,8 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
-import reducer from "./reducers/reducer";
+import reducer from "./modules/reducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import promise from "redux-promise-middleware";
 
 // function middleware1(store) {
 //   console.log("middleware1", 0);
