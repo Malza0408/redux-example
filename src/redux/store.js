@@ -2,6 +2,9 @@ import { createStore, applyMiddleware } from "redux";
 import reducer from "./modules/reducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
+import history from "../history";
+import { routerMiddleware } from "connected-react-router";
+import promise from "redux-promise-middleware";
 
 // function middleware1(store) {
 //   console.log("middleware1", 0);
@@ -29,6 +32,15 @@ import thunk from "redux-thunk";
 //   };
 // }
 
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(
+  reducer,
+  composeWithDevTools(
+    applyMiddleware(
+      thunk.withExtraArgument({ history }),
+      promise,
+      routerMiddleware(history)
+    )
+  )
+);
 
 export default store;
