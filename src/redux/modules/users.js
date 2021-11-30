@@ -1,4 +1,7 @@
 import axios from "axios";
+import { push } from "connected-react-router";
+import { put, call } from "redux-saga/effects";
+import { delay, takeEvery } from "@redux-saga/core/effects";
 // 액션 타입 정의
 //github api 호출을 시작하는 것을 의미한다.
 export const GET_USERS_START = "redux/users/GET_USERS_START";
@@ -119,4 +122,31 @@ export function getUsersPromise() {
       return res.data;
     },
   };
+}
+
+const GET_USERS_SAGA_START = "GET_USERS_SAGA_START";
+
+// redux-saga
+function* getUsersSaga(action) {
+  try {
+    // dispatch(getUsersStart());
+    yield put(getUsersStart());
+    // sleep
+    yield delay(2000);
+    const res = yield call(axios.get, "https://api.github.com/users");
+    yield put(getUsersSuccess(res.data));
+    yield put(push("./"));
+  } catch (error) {
+    yield put(getUsersFail(error));
+  }
+}
+
+export function getUsersSagaStart() {
+  return {
+    type: GET_USERS_SAGA_START,
+  };
+}
+
+export function* usersSaga() {
+  yield takeEvery(GET_USERS_SAGA_START, getUsersSaga);
 }

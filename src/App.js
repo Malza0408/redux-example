@@ -11,11 +11,11 @@ import { ConnectedRouter } from "connected-react-router";
 
 function App() {
   return (
-    <>
+    <ConnectedRouter history={history}>
       <Route path="/" exact component={Home} />
       <Route path="/todos" exact component={Todos} />
       <Route path="/users" exact component={Users} />
-    </>
+    </ConnectedRouter>
   );
 }
 
