@@ -1,8 +1,5 @@
 import "./App.css";
-import TodoListContainer from "./containers/TodoListContainer";
-import TodoFormContainer from "./containers/TodoFormContainer";
-import UserListContainer from "./containers/UserListContainer";
-import { BrowserRouter, Route, Router } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Todos from "./pages/Todos";
 import Users from "./pages/Users";
